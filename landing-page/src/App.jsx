@@ -147,70 +147,116 @@ export default function App() {
       <main className="main">
         {/* Hero Section */}
         <section className="hero-section">
-          <div className="hero-content">
-            <div className="badge">
+          <motion.div 
+            className="hero-content"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div 
+              className="badge"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               <span className="badge-text">An alternative to</span>
               <span className="badge-highlight">Traditional Design</span>
-            </div>
-            <h1 className="hero-title">AI-powered interior design in minutes</h1>
-            <p className="hero-desc">Transform any room with intelligent design suggestions. Upload a photo, choose your style, and watch the magic happen.</p>
-            <div className="hero-buttons">
+            </motion.div>
+            <motion.h1 
+              className="hero-title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              AI-powered interior design in minutes
+            </motion.h1>
+            <motion.p 
+              className="hero-desc"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              Transform any room with intelligent design suggestions. Upload a photo, choose your style, and watch the magic happen.
+            </motion.p>
+            <motion.div 
+              className="hero-buttons"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
               <a href="/register">
-                <button className="btn btn-primary btn-lg">Start 14 day free trial</button>
+                <motion.button 
+                  className="btn btn-primary btn-lg"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Start 14 day free trial
+                </motion.button>
               </a>
               <a href="/demo">
-                <button className="btn btn-secondary btn-lg">See demo</button>
+                <motion.button 
+                  className="btn btn-secondary btn-lg"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  See demo
+                </motion.button>
               </a>
-            </div>
-            <p className="hero-note">No credit card required</p>
-          </div>
+            </motion.div>
+            <motion.p 
+              className="hero-note"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              No credit card required
+            </motion.p>
+          </motion.div>
 
-          <div className="hero-image-wrapper">
+          <motion.div 
+            className="hero-image-wrapper"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
             <div className="hero-image">
               <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" alt="Interior Design Dashboard" />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="features-row">
-            <div className="feature-item">
-              <div className="feature-icon-wrapper">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M10 2L2 7l8 4 8-4-8-5zM2 12l8 4 8-4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <h3 className="feature-title">
-                AI Style Transfer. <span className="text-muted">Transform rooms into 20+ design styles instantly.</span>
-              </h3>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon-wrapper">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="3" y="3" width="14" height="14" rx="2"/>
-                  <circle cx="7" cy="7" r="1.5"/>
-                  <path d="M17 12l-4-4L5 17"/>
-                </svg>
-              </div>
-              <h3 className="feature-title">
-                Photo Upload. <span className="text-muted">Simply upload a photo of your space to get started.</span>
-              </h3>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon-wrapper">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <circle cx="10" cy="10" r="8"/>
-                  <path d="M10 6v4l3 2"/>
-                </svg>
-              </div>
-              <h3 className="feature-title">
-                Instant Results. <span className="text-muted">Get professional designs in under 2 minutes.</span>
-              </h3>
-            </div>
-          </div>
+          <motion.div 
+            className="features-row"
+            initial="initial"
+            animate="animate"
+            variants={stagger}
+          >
+            {[
+              { icon: <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M10 2L2 7l8 4 8-4-8-5zM2 12l8 4 8-4" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: 'AI Style Transfer.', desc: 'Transform rooms into 20+ design styles instantly.' },
+              { icon: <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7" cy="7" r="1.5"/><path d="M17 12l-4-4L5 17"/></svg>, title: 'Photo Upload.', desc: 'Simply upload a photo of your space to get started.' },
+              { icon: <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg>, title: 'Instant Results.', desc: 'Get professional designs in under 2 minutes.' },
+            ].map((item, i) => (
+              <motion.div 
+                key={i} 
+                className="feature-item"
+                variants={fadeInUp}
+              >
+                <div className="feature-icon-wrapper">{item.icon}</div>
+                <h3 className="feature-title">
+                  {item.title} <span className="text-muted">{item.desc}</span>
+                </h3>
+              </motion.div>
+            ))}
+          </motion.div>
         </section>
 
         {/* Styles Section */}
         <section className="section">
-          <div className="section-inner">
+          <motion.div 
+            className="section-inner"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
             <div className="section-header">
               <span className="section-badge">Styles</span>
               <h2 className="section-title">
@@ -219,37 +265,61 @@ export default function App() {
               </h2>
             </div>
 
-            <div className="styles-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80" alt="Design Styles" />
-            </div>
+            <motion.div 
+              className="styles-image-wrapper"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80" alt="Design Styles" />
+            </motion.div>
 
             <p className="section-desc">
               Choose from Modern, Minimalist, Scandinavian, Industrial, Bohemian, and many more styles. Our AI understands the nuances of each aesthetic and applies them intelligently to your space.
             </p>
-          </div>
+          </motion.div>
 
           <div className="feature-cards">
-            <div className="feature-card">
+            <motion.div 
+              className="feature-card"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="feature-card-visual">
-                <div className="style-preview modern"></div>
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Modern Style" />
               </div>
               <div className="feature-card-content">
                 <h3 className="feature-card-title">See your room in any style</h3>
                 <p className="feature-card-desc">Preview your space in different design aesthetics before making any changes. Compare styles side by side.</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="feature-card reverse">
+            <motion.div 
+              className="feature-card reverse"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="feature-card-visual">
-                <div className="style-preview minimal"></div>
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Furniture" />
               </div>
               <div className="feature-card-content">
                 <h3 className="feature-card-title">Get furniture recommendations</h3>
                 <p className="feature-card-desc">AI suggests specific furniture pieces that match your chosen style and fit your room dimensions.</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="feature-card">
+            <motion.div 
+              className="feature-card"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="feature-card-visual">
                 <div className="activity-grid">
                   {[...Array(50)].map((_, i) => (
@@ -261,7 +331,7 @@ export default function App() {
                 <h3 className="feature-card-title">Track your design journey</h3>
                 <p className="feature-card-desc">Save all your designs and iterations. See how your style preferences evolve over time.</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -276,37 +346,34 @@ export default function App() {
               </h2>
             </div>
 
-            <div className="steps-grid">
-              <div className="step-card">
-                <div className="step-visual">
-                  <div className="step-number">1</div>
-                </div>
-                <div className="step-content">
-                  <h3>Upload Photo</h3>
-                  <p>Take a photo of your room or upload an existing one from your device.</p>
-                </div>
-              </div>
-
-              <div className="step-card">
-                <div className="step-visual">
-                  <div className="step-number">2</div>
-                </div>
-                <div className="step-content">
-                  <h3>Choose Style</h3>
-                  <p>Select from Modern, Minimalist, Scandinavian, Industrial, and more.</p>
-                </div>
-              </div>
-
-              <div className="step-card">
-                <div className="step-visual">
-                  <div className="step-number">3</div>
-                </div>
-                <div className="step-content">
-                  <h3>Get Results</h3>
-                  <p>AI transforms your space and provides furniture recommendations.</p>
-                </div>
-              </div>
-            </div>
+            <motion.div 
+              className="steps-grid"
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={stagger}
+            >
+              {[
+                { num: '1', title: 'Upload Photo', desc: 'Take a photo of your room or upload an existing one from your device.' },
+                { num: '2', title: 'Choose Style', desc: 'Select from Modern, Minimalist, Scandinavian, Industrial, and more.' },
+                { num: '3', title: 'Get Results', desc: 'AI transforms your space and provides furniture recommendations.' },
+              ].map((step, i) => (
+                <motion.div 
+                  key={i} 
+                  className="step-card"
+                  variants={fadeInUp}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="step-visual">
+                    <div className="step-number">{step.num}</div>
+                  </div>
+                  <div className="step-content">
+                    <h3>{step.title}</h3>
+                    <p>{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
@@ -389,20 +456,45 @@ export default function App() {
 
             <div className="faq-list">
               {faqs.map((faq, i) => (
-                <div key={i} className={`faq-item ${openFaq === i ? 'open' : ''}`}>
+                <motion.div 
+                  key={i} 
+                  className={`faq-item ${openFaq === i ? 'open' : ''}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                >
                   <button 
                     className="faq-trigger"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   >
                     {faq.q}
-                    <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+                    <motion.svg 
+                      width="16" 
+                      height="16" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2"
+                      animate={{ rotate: openFaq === i ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <path d="M4 6l4 4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    </motion.svg>
                   </button>
-                  <div className="faq-content">
-                    <p>{faq.a}</p>
-                  </div>
-                </div>
+                  <AnimatePresence>
+                    {openFaq === i && (
+                      <motion.div 
+                        className="faq-content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <p>{faq.a}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -411,15 +503,33 @@ export default function App() {
         {/* CTA Section */}
         <section className="section">
           <div className="section-inner">
-            <div className="cta-card">
+            <motion.div 
+              className="cta-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="cta-title">Transform your space today</h2>
               <p className="cta-desc">Start your 14 day free trial and see your room redesigned in minutes.</p>
               <div className="cta-buttons">
-                <button className="btn btn-primary btn-lg">Start 14 day free trial</button>
-                <button className="btn btn-secondary btn-lg">See demo</button>
+                <motion.button 
+                  className="btn btn-primary btn-lg"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Start 14 day free trial
+                </motion.button>
+                <motion.button 
+                  className="btn btn-secondary btn-lg"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  See demo
+                </motion.button>
               </div>
               <p className="cta-note">No credit card required</p>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>
