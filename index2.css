@@ -1,0 +1,503 @@
+
+@import url("https://cdn.prod.website-files.com/682d7fad3c89203197a56faa/css/ditto-preprod.webflow.shared.3171c668a.min.css");
+@import url("https://cdn.prod.website-files.com/682d7fad3c89203197a56faa/css/ditto-preprod.webflow.682d7fad3c89203197a56f9b-7ef69269a.min.css");
+
+a {
+	color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+	margin-bottom: 0 !important;
+}
+
+
+/* Make sure containers never lose their center alignment */
+.container-medium,.container-small, .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+/* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* Apply "..." at 100% width */
+.truncate-width { 
+		width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+/* These classes are never overwritten */
+.hide {
+  display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+    .hide, .hide-tablet {
+        display: none !important;
+    }
+}
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape{
+      display: none !important;
+    }
+}
+  @media screen and (max-width: 479px) {
+    .hide-mobile{
+      display: none !important;
+    }
+}
+
+/* THEME */
+/* BACKUP VAR SO WE CAN DECLARE DEFAULT THEME ON CARD THAT ARE INSIDE OF OTHE THEMES */
+section, footer{
+	color: var(--theme-1-default--text-primary);
+}
+
+/* BLOT LIST */
+/* INCREASING LINKBLOCK'S BANNER'S MAX HEIGHT WHEN INSIDE OF A 2ITEM WRAPPER */
+@media screen and (min-width:769px){
+  .blog-list_2item .blog-list_linkblock-img-wrapper{
+    max-height: 23rem;
+  }
+  .blog-hub-hero_column .blog-list_linkblock-img-wrapper{
+  	max-height: 23rem;
+  }
+}
+
+.blog-list_linkblock:hover .blog-list_linkblock-img{
+	transform: scale(1.05);
+}
+
+/* GET RID OF SCROLLBAR */
+.page-wrapper *::-webkit-scrollbar{
+	display: none;
+}
+.page-wrapper *{
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+/* GET RID OF TABS :BEFORE and :AFTER */
+.w-tabs:before, .w-tabs:after{
+	display: none !important;
+}
+
+/* SECTION */
+section, footer{
+	position: relative;
+  z-index: 1;
+  color: var(--_color-modes---text-primary);
+}
+
+/* UNSET LINKS */
+/*
+a[href="#"], a[href=""] {
+	position: relative;
+}
+a[href="#"]:not([rel="nofollow"]):after, a[href=""]:not([rel="nofollow"]):after{
+	content: " ";
+  position: absolute;
+  top: -0.5rem;
+  bottom: -0.5rem;
+  left: -0.5rem;
+  right: -0.5rem;
+  border: 1px solid red;
+}*/
+
+.ariane_item:after{
+    content: ">";
+    pointer-events: none;
+    margin: 0 0.5rem 0 0.5rem;
+    font-size: 0.675rem;
+}
+.ariane_item:last-child:after{
+    content: "";
+    display: none;
+}
+
+.link-hover-parent:after{
+		content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* NEWSLETTER FORM */
+.newsletter_input_wrapper:after{
+	content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  pointer-events: none;
+  border-radius: inherit;
+  border-width: 0px 0px 1px;
+  border-style: solid;
+  border-top-color: var(--_colors-•-semantic---border-medium);
+  border-right-color: var(--_colors-•-semantic---border-medium);
+  border-bottom-color: var(--_colors-•-semantic---border-medium);
+  border-left-color: var(--_colors-•-semantic---border-medium);
+  
+  transition: all 200ms ease-in-out;
+}
+
+.newsletter_input_wrapper:has(input:focus):after{
+	top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+
+  border-width: 2px 2px 2px;
+  border-top-color: var(--_colors-•-semantic---border-strong);
+  border-right-color: var(--_colors-•-semantic---border-strong);
+  border-bottom-color: var(--_colors-•-semantic---border-strong);
+  border-left-color: var(--_colors-•-semantic---border-strong);
+}
+
+/* Logo strip */
+.logostrip_item_linkblock:hover .button_tiny {
+  background-color: var(--_colors-•-semantic---surface-tertiary);
+  color: var(--_colors-•-semantic---text-primary);
+}
+
+/* Carousel buttons */
+.carousel_section:has(.carousel_pagination_button:not(:nth-child(1)).is-active) .carousel_navigation_button_left{
+	opacity: 100%;
+}
+
+/* Navbar mobile open scroll issue */
+@media (max-width: 992px) {
+	body:has([data-nav-menu-open]){
+  	overflow: hidden;
+  }
+}
+
+.filterui_dropdown_option .filterui_dropdown_icon{
+	margin-left: auto;
+}
+
+.filterui_dropdown:has(input:checked) .filterui_dropdown_toggle:not(.w--open){
+	background-color: var(--_colors-•-primitives---brand--yellow);
+}
+
+
+.text-rich-text p.heading-size-2rem {
+  font-family: var(--font-family--headings);
+  font-size: var(--_headings---heading-size-2rem--font-size);
+  line-height: var(--_headings---heading-size-2rem--line-height);
+  font-weight: var(--_headings---heading-size-2rem--font-weight);
+  letter-spacing: var(--_headings---heading-size-2rem--letter-spacing);
+  margin-top: 0!important;
+  margin-bottom: 0!important;
+}
+
+.post_richtext_cta p{
+  margin-top: 0!important;
+  margin-bottom: 0!important;
+}
+
+.toc_link_h2:first-child{
+	margin-top: 0rem;
+}
+
+/* GET RID OF BOLD WEIGHT ON HEADINGS */
+.text-rich-text h1 strong, .text-rich-text h2 strong, .text-rich-text h3 strong, .text-rich-text h4 strong, .text-rich-text h5 strong, .text-rich-text h6 strong{
+	font-weight: inherit !important;
+}
+
+/* SEARCH INPUT */
+.blogui_search_search_wrapper:has(input[type="checkbox"]:checked) {
+	width: calc(100% + 0rem);
+}
+
+.blogui_search_search_wrapper:has(input[type="checkbox"]:checked) {
+	background-color: var(--_colors-•-primitives---neutral--neutral-white);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--_colors-•-semantic---border-medium);
+}
+
+/* BLOG LIST */
+.card-image .media-full-size{
+	transition: transform 250ms ease-in-out;
+}
+
+.card-image:hover .media-full-size{
+	transform: scale(1.05);
+}
+
+.blog_list_item:first-child {
+  display: flex;
+  grid-column: 1 / 4;
+}
+
+.blog_list_item:first-child .card-image{
+	max-width: none;
+  flex-flow: row;
+  gap: 1.5rem;
+  background-color: var(--_colors-•-primitives---brand--yellow);
+}
+
+.blog_list_item:first-child .card-image .card-image_content{
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 1 0%;
+}
+
+.blog_list_item:first-child .card-image .card-image_thumbnail{
+  order: 1;
+  flex: 1 1 0%;
+  border-style: solid;
+  border-width: 1px;
+  border-top-color: var(--_colors-•-semantic---border-strong);
+  border-right-color: var(--_colors-•-semantic---border-strong);
+  border-bottom-color: var(--_colors-•-semantic---border-strong);
+  border-left-color: var(--_colors-•-semantic---border-strong);
+}
+	
+@media screen and (max-width: 991px) {
+  .blog-preview_item:first-child .card-image {
+    max-width: 26rem;
+    flex-flow: column-reverse;
+  }
+}
+
+.obflink{
+	cursor: pointer;
+}
+
+
+/* ====== Tokens (adaptez aux couleurs de la DA) ====== */
+:root{
+  --bg: var(--_colors-•-semantic---surface-secondary);           /* fond page ivoire */
+  --card: var(--_colors-•-semantic---surface-secondary);         /* carte blanche */
+  --text: #232323;         /* texte principal */
+  --muted: #6b6b6b;        /* texte secondaire */
+  --border: #e6e1d6;       /* bordure sable clair */
+
+  --stripe: #faf8f1;       /* zébrage */
+  --head: #fffdf6;         /* fond thead */
+  --accent: #6a4cf3;       /* accent (violet DA approx) */
+}
+
+/* Ajoutez ce div autour de chaque dans l’article */
+.table-wrap{
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* Indice visuel de scroll sur petit écran (bords fondus) */
+.table-wrap:before,
+.table-wrap:after{
+  content:"";
+  position: sticky;
+  top:0; bottom:0;
+  width: 12px; flex: 0 0 12px;
+  pointer-events:none; z-index: 2;
+}
+.table-wrap:before{ left:0; display:block; background: linear-gradient(90deg, var(--card), transparent); }
+.table-wrap:after{ right:0; display:block; background: linear-gradient(-90deg, var(--card), transparent); }
+
+/* ====== Table ====== */
+.blog-table{
+  width: 100%;
+  min-width: 720px;            /* force le scroll sur mobile si besoin */
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--text);
+  background: var(--card);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Cellules */
+.blog-table th,
+.blog-table td{
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  white-space: normal;
+}
+
+/* En-tête sticky */
+.blog-table thead th{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--head);
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Zébrage + hover */
+.blog-table tbody tr:nth-child(even){ background: var(--stripe); }
+.blog-table tbody tr:hover{ background: rgba(106,76,243,0.06); } /* léger violet */
+
+/* Première colonne un peu plus forte */
+.blog-table tbody td:first-child{ font-weight: 600; }
+
+/* Coins arrondis réels */
+.blog-table thead th:first-child{ border-top-left-radius: 16px; }
+.blog-table thead th:last-child{ border-top-right-radius: 16px; }
+.blog-table tbody tr:last-child td:first-child{ border-bottom-left-radius: 16px; }
+.blog-table tbody tr:last-child td:last-child{ border-bottom-right-radius: 16px; }
+
+/* Légende */
+.blog-table caption{
+  caption-side: top;
+  text-align: left;
+  padding: 10px 2px 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* État focus pour accessibilité */
+.table-wrap:focus-visible{
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Scrollbar discrète (WebKit) */
+.table-wrap::-webkit-scrollbar{ height: 10px; }
+.table-wrap::-webkit-scrollbar-track{ background: transparent; }
+.table-wrap::-webkit-scrollbar-thumb{
+  background: #d9d3c6;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.table-wrap:hover::-webkit-scrollbar-thumb{ background: #c9c2b3; }
+
+/* Compact sur mobile */
+@media (max-width: 767px){
+  .blog-table{ font-size: 0.9rem; }
+  .blog-table th, .blog-table td{ padding: 10px 12px; }
+}
+
+.post_goodtoknow p {
+	margin-top: 0rem;
+}
+.navbar_hamburger {
+	--thickness: 0.15rem;
+	--gap: 0.5rem;
+	--rotate: 45;
+  --width: 70%;
+}
+.w--open .navbar_hamburger-line {
+	width: 70% !important;
+	transform: scaleX(0);
+}
+.w--open .navbar_hamburger-line:first-child {
+	transform: translateY(calc(var(--thickness) + var(--gap))) rotate(calc(var(--rotate) * 3 * 1deg));
+}
+.w--open .navbar_hamburger-line:last-child {
+	transform: translateY(calc(var(--thickness) * -1 + var(--gap) * -1)) rotate(calc(var(--rotate) * 1deg));
+}
+.navbar1_dropdown .icon-wrapper{
+	transition: transform 0.4s ease;
+}
+.navbar1_dropdown:hover .icon-wrapper, .navbar1_dropdown:has(.navbar1_link.w--open) .icon-wrapper{
+	transform: rotate(-180deg);
+}
+@media screen and (min-width: 992px){
+  .navbar1_dropdown:hover .navbar1_link.w--open{
+    background-color: var(--_colors-•-semantic---surface-tertiary);
+  }
+  
+  .dropdown1_grid{
+    grid-template-columns: 23.5rem 0rem;
+    transition-property: grid-template-columns;
+    transition-delay: 400ms;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .navbar1_dropdown-small{
+    left: 0rem;
+  }
+
+  .dropdown1_grid:has([dropdown-accordion="csrd-link"]:hover), .dropdown1_grid:has(.dropdown1_grid_clip:hover) {
+    grid-template-columns: 23.5rem 27rem;
+    transition-delay: 0ms;
+  }
+
+  .navbar1_dropdown-small:has([dropdown-accordion="csrd-link"]){
+    transition-property: left;
+    transition-delay: 400ms;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
+    left: 0rem;
+  }
+
+  .navbar1_dropdown-small:has([dropdown-accordion="csrd-link"]:hover), .navbar1_dropdown-small:has(.dropdown1_grid_clip:hover){
+    left: -13.5rem;
+    transition-delay: 0ms;
+  }
+}
